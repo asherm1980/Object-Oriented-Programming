@@ -1,0 +1,43 @@
+﻿
+
+class Queue:
+    #
+    # Code from the previous lab.
+    #
+    def __init__(self):
+        self.stack_list=[]
+    def put(self,elem):
+        self.stack_list.insert(0,elem)
+    def get(self):
+        elem=self.stack_list[-1]
+        del self.stack_list[-1]
+        return elem
+    def isempty(self):
+        return len(self.stack_list)==0
+
+
+class SuperQueue(Queue):
+    #
+    # Write new code here.
+    #
+    def __init__(self):
+        Queue.__init__(self)
+    def put(self,elem):
+        Queue.put(self,elem)
+    def get(self):
+        elem=Queue.get(self)
+        return elem
+    def isempty(self):
+        
+        return Queue.isempty(self)
+
+que = SuperQueue()
+que.put(1)
+que.put("dog")
+que.put(False)
+que.get()
+for i in range(4):
+    if not que.isempty():
+        print(que.get())
+    else:
+        print("Queue empty")
